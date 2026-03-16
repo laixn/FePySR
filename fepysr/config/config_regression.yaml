@@ -1,0 +1,42 @@
+#FePySR默认参数
+FMN:
+  batch_size: 50
+  lr: 0.5
+  num_epochs: 100
+  loss: fepysr.optimization.squared_loss
+  loss_parameter:
+    lambda1: 0.08
+    lambda2: 0.001
+  net:
+    fun_list: Null
+    net_depth: 4
+    fun_re: 4
+    full_net: Null
+  device: "auto"
+  FMN_only: Null
+
+data_symbol:
+  raw_data: Null
+  output_symbols: Null
+  fea_num: 10
+  pysr_num: 6
+
+Parallel:
+  num_experiments: 16
+  num_workers: 8
+
+pysr_params:
+  populations: 8
+  population_size: 50
+  ncycles_per_iteration: 500
+  niterations: 2000
+  timeout_in_seconds: 86400
+  maxsize: 25
+  maxdepth: 10
+  early_stop_condition: 
+        "stop_if(loss, complexity) = loss < 1e-9 && complexity < 40"
+  binary_operators: ["*", "+", "-"]
+  unary_operators: ["cos", "sqrt", "exp", "sin", "inv(x) = 1/x"]
+  elementwise_loss: "loss(prediction, target) = (prediction - target)^2"
+  nested_constraints:
+    exp: {"exp": 0}

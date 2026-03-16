@@ -1,0 +1,38 @@
+{
+   "FMN": {
+      "batch_size": 50,
+      "lr": 0.5,
+      "num_epochs": 100,
+      "loss": "utils.regularization.squared_loss",
+      "default": "",
+      "fea_num": 10,
+      "symbolic_depth": 4
+   },
+   
+   "Parallel": {
+      "num_experiments": 16,
+      "num_workers": 4
+   },
+      
+   "PySR": {
+      "n_samples": 1000000,
+      "batch_size": 1000,
+      "epsilon": 0.05,
+      "baseline": "R_e",
+      "alpha": 0.5,
+      "b_jumpstart": false,
+      "n_cores_batch": 1,
+      "complexity": "token",
+      "const_optimizer": "scipy",
+      "const_params": {"method": "L-BFGS-B",
+      "options": {"gtol": 0.001}},
+      "verbose": true,
+      "debug": 0,
+      "early_stopping": true,
+      "use_memory": false,
+      "memory_capacity": 1000.0,
+      "warm_start": null,
+      "memory_threshold": null
+   }
+
+}
