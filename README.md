@@ -1,17 +1,18 @@
 ## FePySR: Feature Mapping Network-PySR
-FePySR: A Two-Stage Symbolic Regression Framework via Feature Engineering
+FePySR: A Two-Stage Symbolic Regression Framework via Symbolic Feature Discovery
+
+Symbolic Regression (SR) is notoriously bottlenecked by the NP-hard challenge of combinatorial explosion—both in variable selection and function structure search. **FePySR (Feature Mapping Network-PySR)** tackles this by bridging the gap between deep learning representation and symbolic logic. 
+
+By introducing a novel feature space reconstruction strategy, FePySR effectively mitigates the limitations of traditional methods in strongly nonlinear problems. It deeply empowers advanced search algorithms, providing a highly efficient and automated solution for scientific discovery.
 
 ## Why FePySR?
-Feature Mapping Network-PySR is a method that addresses the core challenges of the NP-hard problem in symbolic regression — the combinatorial explosion of variable selection and the inherent difficulties in function structure search — by proposing an innovative feature space reconstruction strategy, thus providing an efficient solution for automated scientific discovery. This method compensates for the shortcomings of existing methods in strongly nonlinear problems, can deeply empower various advanced search algorithms, and offers a brand-new breakthrough for the development of the symbolic regression field.
+While traditional SR struggles with high-dimensional inputs and vast search spaces, FePySR seamlessly integrates the representational power of neural networks with the interpretability of symbolic mathematics:
 
-
-While traditional Symbolic Regression (SR) struggles with high-dimensional inputs and vast search spaces, FePySR bridges the gap between deep learning and symbolic logic:
-
-1. **Neural-Guided Library Augmentation**: Instead of blindly searching, Stage 1 trains a sparse FMN to learn a "library" of critical basis functions and composite features directly from the data.
-2. **Exponentially Reduced Search Space**: By feeding these pre-constructed features into PySR (Stage 2), FePySR solves complex physics and biological kinetics problems that traditional SR cannot reach.
-3. **Scikit-Learn API**: Built for practitioners. Just call `.fit()` and `.predict()`.
-4. **Declarative Configuration**: Powered by `hydra`, you can customize neural network depth, operator pools, and parallel workers without modifying a single line of source code.
-5. **CPU-Optimized Concurrency**: Safe, fast, and lightweight native multi-processing. No CUDA/GPU headaches required.
+- **Neural-Guided Feature Discovery (Stage 1):** Instead of relying on blind combinatorial search, FePySR trains a sparse Feature Mapping Network (FMN) to automatically extract a "library" of critical basis functions and composite features directly from the data.
+- **Exponential Search Space Reduction (Stage 2):** By feeding these neural-constructed features into PySR, FePySR drastically narrows the symbolic search space. This enables the discovery of complex governing equations in physics and biokinetics that remain completely out of reach for traditional SR frameworks.
+- **Seamless Scikit-Learn API:** Built for researchers and practitioners alike. Train and evaluate models effortlessly with standard `.fit()` and `.predict()` interfaces.
+- **Declarative Configuration:** Powered by `hydra`, you can fully customize neural network depth, mathematical operator pools, and parallelization settings via simple YAML files—no source code modifications required.
+-  **CPU-Optimized Concurrency:** Safe, lightning-fast, and lightweight native multi-processing. Enjoy high-performance symbolic regression without the overhead of CUDA/GPU environment configurations.
 
 ---
 
