@@ -181,7 +181,7 @@ model = FePySR(
 )
 
 ```
-All hyperparameters are comprehensively documented in [`config_regression.yaml`](./pysr/config_regression.yaml). We specifically introduced the `FMN_only` toggle, which allows you to execute only the neural network feature extraction stage (Stage 1). This empowers you to use FePySR as a standalone feature engineering tool, extracting high-quality mathematical features to feed into other symbolic regression solvers or traditional machine learning algorithms.
+All hyperparameters are comprehensively documented in [`config_regression.yaml`](./pysr/config/config_regression.yaml). We specifically introduced the `FMN_only` toggle, which allows you to execute only the neural network feature extraction stage (Stage 1). This empowers you to use FePySR as a standalone feature engineering tool, extracting high-quality mathematical features to feed into other symbolic regression solvers or traditional machine learning algorithms.
 ```python
 model = FePySR(overrides=['FMN.FMN_only=True'],custom_pysr_model=model_default)
 ```
