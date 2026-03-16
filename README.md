@@ -133,9 +133,10 @@ To avoid cluttering the terminal, FePySR stores detailed background data as mode
 | :--- | :--- | :--- |
 | `best_equation_` | `str` | The final, most accurate symbolic expression.  |
 | `feature_names_` | `list` | Deduplicated list of high-quality features extracted by FMN. |
-| `all_feature_names_` | `dict` | Complete pool of features with their extraction frequencies.  |
+| `all_feature_names_` | `list[tuple]` | Complete pool of features with their extraction frequencies.  |
 | `best_model_` | `pd.Series` | PySR's underlying model state for the best equation.  |
 | `solved_pysr_model` | `PySRRegressor` | The complete trained PySR estimator object.  |
+| `data_analyzer_` | [`DataAnalyzer`](./fepysr/data_analyzer.py) | The core object managing features, labels, and symbols.
 
 ### Detailed Example
 The following code makes use of as many PySR features as possible.
@@ -180,7 +181,7 @@ model = FePySR(
 )
 
 ```
-All hyperparameters are comprehensively documented in [`config_regression.yaml`](./config_regression.yaml). We specifically introduced the `FMN_only` toggle, which allows you to execute only the neural network feature extraction stage (Stage 1). This empowers you to use FePySR as a standalone feature engineering tool, extracting high-quality mathematical features to feed into other symbolic regression solvers or traditional machine learning algorithms.
+All hyperparameters are comprehensively documented in [`config_regression.yaml`](./pysr/config_regression.yaml). We specifically introduced the `FMN_only` toggle, which allows you to execute only the neural network feature extraction stage (Stage 1). This empowers you to use FePySR as a standalone feature engineering tool, extracting high-quality mathematical features to feed into other symbolic regression solvers or traditional machine learning algorithms.
 ```python
 model = FePySR(overrides=['FMN.FMN_only=True'],custom_pysr_model=model_default)
 ```
