@@ -58,7 +58,7 @@ FePySR requires Python (for deep learning) and Julia (for symbolic search). For 
 ### 1. Install Julia
 
 If you are on Windows, you can easily install Julia using Scoop. Scoop will automatically add Julia to your system `PATH`, which prevents most backend connection issues.
-(Windows 用户可以使用 Scoop 一键安装 Julia，它会自动配置好系统环境变量，能避免绝大多数的后端连接报错。)
+
 
 ```bash
 scoop install julia
@@ -106,16 +106,16 @@ from pysr import PySRRegressor
 import torch
 from utils.fepysr import FePySR
 
-# 1. Load the benchmark data (加载测试数据)
+# 1. Load the benchmark data 
 data = np.load("fun_rec_data/fun_rec_1.npy")
 X = torch.from_numpy(data[:, :1])
 y = torch.from_numpy(data[:, 1:])
 
-# 2. Initialize and train the model (初始化并训练模型)
+# 2. Initialize and train the model 
 model = FePySR(overrides=["Parallel.num_workers=8", "Parallel.num_experiments=32"])
 model.fit(X, y)
 
-# 3. Print the most intuitive results (打印最直观的核心结果)
+# 3. Print the most intuitive results 
 print("Best Equation: ", model.best_equation_)
 print("Extracted Features: ", model.feature_names_)
 ```
@@ -183,7 +183,7 @@ model = FePySR(
 ```
 All hyperparameters are comprehensively documented in [`config_regression.yaml`](./pysr/config/config_regression.yaml). We specifically introduced the `FMN_only` toggle, which allows you to execute only the neural network feature extraction stage (Stage 1). This empowers you to use FePySR as a standalone feature engineering tool, extracting high-quality mathematical features to feed into other symbolic regression solvers or traditional machine learning algorithms.
 ```python
-model = FePySR(overrides=['FMN.FMN_only=True'],custom_pysr_model=model_default)
+model = FePySR(overrides=['FMN.FMN_only=True'])
 ```
 Please note that the `pysr_params` section in `config_regression.yaml` exposes only the most frequently used PySR configurations. To unlock the full potential and advanced features of PySR, you can pre-configure a native `PySRRegressor` instance and inject it directly into FePySR using the `custom_pysr_model` parameter.
 ```python
