@@ -226,7 +226,7 @@ If you use FePySR in your research (e.g., for symbolic regression in biokinetics
 ```
 
 ## License
-This project is licensed under the GPLv3 License - see the LICENSE file for details.
+This project is licensed under the MIT License - see the LICENSE file for details.
 
 
 
