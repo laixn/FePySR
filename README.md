@@ -218,7 +218,7 @@ If you use FePySR in your research (e.g., for symbolic regression in biokinetics
 ```bibtex
 @article{yu2026fepysr,
   title={FePySR: A Two-Stage Symbolic Regression Framework via Feature Engineering},
-  author={Yu, Zhiming and others},
+  author={Zhiming Yu, Wnagtao Lu, Xin Lai},
   journal={arXiv},
   doi={},
   year={2026}
@@ -227,7 +227,3 @@ If you use FePySR in your research (e.g., for symbolic regression in biokinetics
 
 ## License
 This project is licensed under the MIT License - see the LICENSE file for details.
-
-
-
-
