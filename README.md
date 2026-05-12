@@ -1,9 +1,10 @@
-## FePySR: Feature Mapping Network-PySR
-FePySR: A Two-Stage Symbolic Regression Framework via Symbolic Feature Discovery
+## FePySR: A Neural Feature Extraction Framework for Eﬀicient and Scalable Symbolic Regression
 
 Symbolic Regression (SR) is notoriously bottlenecked by the NP-hard challenge of combinatorial explosion—both in variable selection and function structure search. **FePySR (Feature Mapping Network-PySR)** tackles this by bridging the gap between deep learning representation and symbolic logic. 
 
 By introducing a novel feature space reconstruction strategy, FePySR effectively mitigates the limitations of traditional methods in strongly nonlinear problems. It deeply empowers advanced search algorithms, providing a highly efficient and automated solution for scientific discovery.
+
+Add Figure 2 from the main text.
 
 ## Why FePySR?
 While traditional SR struggles with high-dimensional inputs and vast search spaces, FePySR seamlessly integrates the representational power of neural networks with the interpretability of symbolic mathematics:
