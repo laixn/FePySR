@@ -1,10 +1,20 @@
-## FePySR: A Neural Feature Extraction Framework for Eﬀicient and Scalable Symbolic Regression
+# FePySR: A Neural Feature Extraction Framework for Efficient and Scalable Symbolic Regression
 
-Symbolic Regression (SR) is notoriously bottlenecked by the NP-hard challenge of combinatorial explosion—both in variable selection and function structure search. **FePySR (Feature Mapping Network-PySR)** tackles this by bridging the gap between deep learning representation and symbolic logic. 
 
-By introducing a novel feature space reconstruction strategy, FePySR effectively mitigates the limitations of traditional methods in strongly nonlinear problems. It deeply empowers advanced search algorithms, providing a highly efficient and automated solution for scientific discovery.
+Symbolic Regression (SR) is notoriously bottlenecked by the NP-hard challenge of combinatorial explosion—both in variable selection and function structure search. However, many complex expressions in practical applications naturally decompose into combinations of reusable nonlinear feature modules.
 
-Add Figure 2 from the main text.
+**FePySR (Feature Mapping Network-PySR)** tackles this challenge by introducing a highly efficient **two-stage framework** that bridges deep learning representations with symbolic logic.
+
+- First, it employs a heterogeneous neural network to constrain observational data and extract valid, reusable feature modules prior to the equation search. 
+- Second, it performs advanced structural optimization within this exponentially refined search space using PySR. 
+
+By effectively mitigating the limitations of traditional methods in strongly nonlinear problems, FePySR significantly outperforms state-of-the-art baselines in equation recovery rates, providing an automated and scalable solution for scientific discovery.
+
+<p align="center">
+  <img src="figure/FePySR.png" alt="Feature Mapping Network " width="80%">
+  <br>
+  <!-- <em>Figure 1: Feature Mapping Network.</em> -->
+</p>
 
 ## Why FePySR?
 While traditional SR struggles with high-dimensional inputs and vast search spaces, FePySR seamlessly integrates the representational power of neural networks with the interpretability of symbolic mathematics:
@@ -24,9 +34,10 @@ FePySR operates in a pipeline:
 
 ---
 
-## The current version is to provide reviewers with reproducible experimental results
+## Repository Structure & Reproducibility
+The current version is to provide reviewers with reproducible experimental results
 ```bash
-/home/yioily/SymbolisRegression/PySR/github/
+/FePySR
 ├─fun_rec_data
 ├─fun_rec_feature_num_test_data
 │  ├─loss_pic
@@ -36,21 +47,20 @@ FePySR operates in a pipeline:
 │  ├─data
 │  ├─equation
 │  └─loss
-├─FePySR
-│  └─utils
-│     ├─__pycache__
-│     ├─config
-│     │  └─config_regression.yaml
-│     ├─__init__.py
-│     ├─data_analyzer.py
-│     ├─feature_maker.py
-│     ├─feature_mapping_network.py
-│     ├─fepysr.py
-│     ├─fmn_builder.py
-│     ├─fmn_train.py
-│     ├─functions.py
-│     ├─optimization.py
-│     └─pysr_train.py
+├─fepysr
+│   ├─__pycache__
+│   ├─config
+│   │  └─config_regression.yaml
+│   ├─__init__.py
+│   ├─data_analyzer.py
+│   ├─feature_maker.py
+│   ├─feature_mapping_network.py
+│   ├─fepysr.py
+│   ├─fmn_builder.py
+│   ├─fmn_train.py
+│   ├─functions.py
+│   ├─optimization.py
+│   └─pysr_train.py
 ```
 
 ## Installation
@@ -105,7 +115,7 @@ You may wish to quickly reproduce the experiments in the article, and take the f
 import numpy as np
 from pysr import PySRRegressor
 import torch
-from utils.fepysr import FePySR
+from fepysr import FePySR
 
 # 1. Load the benchmark data 
 data = np.load("fun_rec_data/fun_rec_1.npy")
@@ -147,7 +157,7 @@ model = FePySR(
         "FMN.batch_size=50",
         "FMN.lr=0.5",
         "FMN.num_epochs=100",
-        "FMN.loss=utils.optimization.squared_loss",
+        "FMN.loss=fepysr.optimization.squared_loss",
         "FMN.loss_parameter.lambda1=0.08",
         "FMN.loss_parameter.lambda2=0.001",
         "FMN.net.fun_list=null",
@@ -182,14 +192,14 @@ model = FePySR(
 )
 
 ```
-All hyperparameters are comprehensively documented in [`config_regression.yaml`](./pysr/config/config_regression.yaml). We specifically introduced the `FMN_only` toggle, which allows you to execute only the neural network feature extraction stage (Stage 1). This empowers you to use FePySR as a standalone feature engineering tool, extracting high-quality mathematical features to feed into other symbolic regression solvers or traditional machine learning algorithms.
+All hyperparameters are comprehensively documented in [`config_regression.yaml`](./fepysr/config/config_regression.yaml). We specifically introduced the `FMN_only` toggle, which allows you to execute only the neural network feature extraction stage (Stage 1). This empowers you to use FePySR as a standalone feature engineering tool, extracting high-quality mathematical features to feed into other symbolic regression solvers or traditional machine learning algorithms.
 ```python
 model = FePySR(overrides=['FMN.FMN_only=True'])
 ```
 Please note that the `pysr_params` section in `config_regression.yaml` exposes only the most frequently used PySR configurations. To unlock the full potential and advanced features of PySR, you can pre-configure a native `PySRRegressor` instance and inject it directly into FePySR using the `custom_pysr_model` parameter.
 ```python
 from pysr import PySRRegressor
-from utils.fepysr import FePySR
+from fepysr import FePySR
 
 model_pysr = PySRRegressor(
     populations=8,
@@ -217,8 +227,8 @@ If you use FePySR in your research (e.g., for symbolic regression in biokinetics
 
 ```bibtex
 @article{yu2026fepysr,
-  title={FePySR: A Two-Stage Symbolic Regression Framework via Feature Engineering},
-  author={Zhiming Yu, Wnagtao Lu, Xin Lai},
+  title={FePySR: A Neural Feature Extraction Framework for Efficient and Scalable Symbolic Regression},
+  author={Zhiming Yu, Wangtao Lu, Xin Lai},
   journal={arXiv},
   doi={},
   year={2026}
