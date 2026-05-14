@@ -1,5 +1,5 @@
 # FePySR: A Neural Feature Extraction Framework for Efficient and Scalable Symbolic Regression
-
+[![Paper](https://img.shields.io/badge/arXiv-2605.12704-b31b1b)](https://arxiv.org/abs/2605.12704)
 
 Symbolic Regression (SR) is notoriously bottlenecked by the NP-hard challenge of combinatorial explosion—both in variable selection and function structure search. However, many complex expressions in practical applications naturally decompose into combinations of reusable nonlinear feature modules.
 
