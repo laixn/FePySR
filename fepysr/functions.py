@@ -187,4 +187,5 @@ default_func2 = [
     *[Trigon_cos()] * 4,
     *[mul()] * 4,
     *[add()] * 4,
+    *[sub()] * 4,
 ]
