@@ -230,7 +230,7 @@ If you use FePySR in your research (e.g., for symbolic regression in biokinetics
   title={FePySR: A Neural Feature Extraction Framework for Efficient and Scalable Symbolic Regression},
   author={Zhiming Yu, Wangtao Lu, Xin Lai},
   journal={arXiv},
-  doi={},
+  doi={https://doi.org/10.48550/arXiv.2605.12704},
   year={2026}
 }
 ```
