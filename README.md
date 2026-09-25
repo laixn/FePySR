@@ -236,4 +236,4 @@ If you use FePySR in your research (e.g., for symbolic regression in biokinetics
 ```
 
 ## License
-© [Lai Lab](https://sites.google.com/view/lai-lab) - This project is made available under the MITF License.
+©[Lai Lab](https://sites.google.com/view/lai-lab) - This code is available under [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0) license.
